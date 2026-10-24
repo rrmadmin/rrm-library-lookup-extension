@@ -8,11 +8,15 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const m = JSON.parse(readFileSync(join(root, 'manifest.json'), 'utf8'));
 const md = readFileSync(join(root, 'store', 'listing.md'), 'utf8');
 
+// The listing is a sequence of "# Heading" blocks; each section is the text up to the next one.
+const sections = new Map();
+for (const block of md.split(/^# /m).slice(1)) {
+  const nl = block.indexOf('\n');
+  sections.set(block.slice(0, nl).trim(), block.slice(nl + 1).trim());
+}
 function section(name) {
-  const re = new RegExp(`^# ${name}\\n+([\\s\\S]*?)(?=\\n# |$)`, 'm');
-  const hit = md.match(re);
-  assert.ok(hit, `listing.md has no "# ${name}" section`);
-  return hit[1].trim();
+  assert.ok(sections.has(name), `listing.md has no "# ${name}" section`);
+  return sections.get(name);
 }
 
 test('listing name equals the manifest name and the subtitle is the spec line', () => {
