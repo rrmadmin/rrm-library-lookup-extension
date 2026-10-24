@@ -1,0 +1,50 @@
+{
+  "url": "https://evidence.nejm.org/doi/10.1056/EVIDoa2400195",
+  "canonical": "https://evidence.nejm.org/doi/full/10.1056/EVIDoa2400195",
+  "metas": [
+    {
+      "name": "citation_journal_title",
+      "content": "NEJM Evidence"
+    },
+    {
+      "name": "dc.Title",
+      "content": "Validation of a Saliva Micro–RNA Signature for Endometriosis"
+    },
+    {
+      "name": "dc.Publisher",
+      "content": "Massachusetts Medical Society"
+    },
+    {
+      "name": "dc.Date",
+      "content": "2025-10-28"
+    },
+    {
+      "name": "dc.Type",
+      "content": "research-article"
+    },
+    {
+      "name": "dc.Format",
+      "content": "text/HTML"
+    },
+    {
+      "name": "dc.Identifier",
+      "content": "10.1056/EVIDoa2400195"
+    },
+    {
+      "name": "dc.Identifier",
+      "content": "EVIDoa2400195"
+    },
+    {
+      "name": "dc.Language",
+      "content": "EN"
+    },
+    {
+      "name": "dc.Relation",
+      "content": "10.1056/EVIDe2500248"
+    },
+    {
+      "name": "dc.Coverage",
+      "content": "world"
+    }
+  ]
+}

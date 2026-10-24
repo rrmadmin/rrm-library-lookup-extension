@@ -1,0 +1,62 @@
+{
+  "url": "https://www.sciencedirect.com/science/article/abs/pii/S037887412600989X?via%3Dihub",
+  "canonical": "https://www.sciencedirect.com/science/article/abs/pii/S037887412600989X",
+  "metas": [
+    {
+      "name": "dc.identifier",
+      "content": "10.1016/j.jep.2026.122135"
+    },
+    {
+      "name": "citation_pii",
+      "content": "S037887412600989X"
+    },
+    {
+      "name": "citation_id",
+      "content": "122135"
+    },
+    {
+      "name": "citation_issn",
+      "content": "0378-8741"
+    },
+    {
+      "name": "citation_volume",
+      "content": "372"
+    },
+    {
+      "name": "citation_doi",
+      "content": "10.1016/j.jep.2026.122135"
+    },
+    {
+      "name": "citation_publisher",
+      "content": "Elsevier"
+    },
+    {
+      "name": "citation_firstpage",
+      "content": "122135"
+    },
+    {
+      "name": "citation_title",
+      "content": "Harnessing natural herbaceous plants against ferroptosis: Implications for managing polycystic ovary syndrome"
+    },
+    {
+      "name": "citation_journal_title",
+      "content": "Journal of Ethnopharmacology"
+    },
+    {
+      "name": "citation_type",
+      "content": "JOUR"
+    },
+    {
+      "name": "citation_article_type",
+      "content": "Review article"
+    },
+    {
+      "name": "citation_publication_date",
+      "content": "2027/01/10"
+    },
+    {
+      "name": "citation_online_date",
+      "content": "2026/06/28"
+    }
+  ]
+}
