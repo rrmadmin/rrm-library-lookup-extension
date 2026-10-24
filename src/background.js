@@ -3,6 +3,7 @@
 import { detectIdentifier, normalizeDoi, normalizePmid } from './lib/detect.js';
 import { lookup } from './lib/api.js';
 import { createTabStore, badgeFor, shouldApply, mintRequestId, stateFromLookup } from './lib/state.js';
+import { collectPageSignals } from './lib/collect.js';
 
 const BADGE_COLOR = '#987da8';
 const MENU_ID = 'rrm-lookup';
@@ -29,29 +30,19 @@ function persist() {
   return chrome.storage.session.set({ [STORAGE_KEY]: store.entries() }).catch(() => {});
 }
 
-// Runs inside the page via chrome.scripting.executeScript, so it must be self-contained. Reads
-// only meta[name], link[rel=canonical] and location.href, and nothing else on the page.
-function collectPageSignals() {
-  const wanted = /^(citation_|dc\.|dcterms\.|prism\.)/i;
-  const metas = [];
-  for (const m of document.querySelectorAll('meta[name]')) {
-    const name = m.getAttribute('name') || '';
-    if (wanted.test(name)) metas.push({ name, content: m.getAttribute('content') || '' });
-  }
-  const link = document.querySelector('link[rel="canonical"]');
-  return { url: location.href, canonical: link ? link.getAttribute('href') : null, metas };
-}
-
 function setBadge(tabId, state) {
   const text = badgeFor(state);
   chrome.action.setBadgeText({ tabId, text }).catch(() => {});
   if (text) chrome.action.setBadgeBackgroundColor({ tabId, color: BADGE_COLOR }).catch(() => {});
 }
 
+// Every state change ends here, and the popup and side panel re-ask on the broadcast, so a
+// lookup that settles after the page finished loading still reaches an open panel.
 async function setEntry(tabId, entry) {
   store.set(tabId, entry);
   setBadge(tabId, entry.state);
   await persist();
+  broadcast({ type: 'TAB_CHANGED', tabId });
   return entry;
 }
 
@@ -92,6 +83,7 @@ async function activeTabId() {
 async function checkTab(tabId) {
   let signals = null;
   try {
+    // collectPageSignals is serialized and run inside the page; collect.js keeps it self-contained.
     const [hit] = await chrome.scripting.executeScript({ target: { tabId }, func: collectPageSignals });
     signals = hit && hit.result;
   } catch {
@@ -169,7 +161,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
     u.searchParams.set('q', text.slice(0, 300));
     chrome.tabs.create({ url: u.toString() }).catch(() => {});
   });
-  ready.then(() => handleSelection(tab.id, text)).then(() => broadcast({ type: 'TAB_CHANGED', tabId: tab.id }));
+  ready.then(() => handleSelection(tab.id, text));
 });
 
 chrome.runtime.onInstalled.addListener(() => {

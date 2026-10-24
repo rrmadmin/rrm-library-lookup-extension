@@ -25,6 +25,6 @@ Manifest V3, plain ES modules, no bundler, no framework. Fonts (Cormorant Garamo
 
 - `src/content.js` runs at `document_idle` on the fixed host list, reads the citation meta tags once (`src/lib/collect.js`), and messages the service worker. It writes nothing to the page.
 - `src/background.js` detects the identifier (`src/lib/detect.js`), calls the lookup route (`src/lib/api.js`), keeps per-tab state (`src/lib/state.js`), sets the badge, owns the context menu and the side panel.
-- `src/popup.html` and `src/sidepanel.html` render the same card (`src/lib/card.js`, `src/card.css`).
+- `src/popup.html` and `src/sidepanel.html` render the same card (`src/lib/card.js`, `src/card.css`) through one view module (`src/lib/view.js`) that asks the worker for the active tab's state, owns the clipboard and the "Check this page" message, and re-asks on `TAB_CHANGED`, keeping the last card up until the next answer is in.
 
 The lookup route is `GET https://rrmacademy.org/api/library/lookup?doi=|pmid=|q=` (exactly one), answering `{ v: 1, found, record | candidates }`. Its design is in the rrm-academy-cf repo: `docs/superpowers/specs/2026-10-16-rrm-library-lookup-extension-design.md`.

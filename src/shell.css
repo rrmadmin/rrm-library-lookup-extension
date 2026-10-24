@@ -1,0 +1,73 @@
+/* Page shell around the shared card (card.css): the popup's fixed width and the side panel's
+   header. Same palette and fonts as card.css; the header is set off by a tint, never a rule. */
+
+.rrm-shell {
+  min-height: 100%;
+}
+
+.rrm-shell--popup {
+  width: 360px;
+  overflow-x: hidden;
+}
+
+.rrm-shell--panel {
+  min-width: 280px;
+}
+
+.rrm-shell-main {
+  display: block;
+  max-width: 420px;
+}
+
+.rrm-shell--popup .rrm-shell-main {
+  width: 360px;
+}
+
+.rrm-shell-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 420px;
+  box-sizing: border-box;
+  padding: 14px 16px 12px;
+  background: var(--rrm-tint);
+  color: var(--rrm-primary);
+}
+
+.rrm-shell-mark {
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+}
+
+.rrm-shell-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.rrm-shell-header p {
+  margin: 0;
+}
+
+.rrm-shell-brand {
+  font-family: var(--rrm-font-display);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--rrm-ink);
+}
+
+.rrm-shell-brand-sub {
+  font-weight: 400;
+  color: var(--rrm-primary);
+}
+
+.rrm-shell-following {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--rrm-ink-muted);
+}
