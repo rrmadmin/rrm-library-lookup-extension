@@ -1,0 +1,265 @@
+/* Card styles shared by the popup and the side panel. Palette from the RRM Academy style guide:
+   #725e7e buttons and links, #987da8 grade chip, #f5f0f8 tints, #4c3e54 hover only.
+   Blocks separate by spacing, eyebrows and tinted panels; there are no hairline dividers. */
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/CormorantGaramond-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('fonts/CormorantGaramond-600.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/Inter-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('fonts/Inter-500.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('fonts/Inter-600.woff2') format('woff2');
+}
+
+:root {
+  --rrm-primary: #725e7e;
+  --rrm-primary-hover: #4c3e54;
+  --rrm-chip: #987da8;
+  --rrm-tint: #f5f0f8;
+  --rrm-ink: #2b2433;
+  --rrm-ink-muted: #6b6273;
+  --rrm-paper: #ffffff;
+  --rrm-font-ui: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --rrm-font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--rrm-paper);
+  color: var(--rrm-ink);
+  font-family: var(--rrm-font-ui);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.rrm-card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  max-width: 420px;
+}
+
+.rrm-card--popup {
+  width: 360px;
+}
+
+.rrm-card--panel {
+  width: 100%;
+}
+
+.rrm-card > * {
+  margin: 0;
+}
+
+.rrm-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rrm-primary);
+}
+
+.rrm-eyebrow--quiet {
+  color: var(--rrm-ink-muted);
+}
+
+.rrm-headline {
+  font-family: var(--rrm-font-display);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.2;
+  color: var(--rrm-ink);
+  overflow-wrap: anywhere;
+}
+
+.rrm-card--panel .rrm-headline {
+  font-size: 28px;
+}
+
+.rrm-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.rrm-chip {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+  background: var(--rrm-tint);
+  color: var(--rrm-primary);
+}
+
+.rrm-chip--grade {
+  background: var(--rrm-chip);
+  color: #ffffff;
+}
+
+.rrm-prose {
+  font-size: 14px;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+.rrm-prose strong {
+  font-weight: 600;
+}
+
+.rrm-muted {
+  color: var(--rrm-ink-muted);
+  font-size: 14px;
+}
+
+.rrm-section {
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: var(--rrm-tint);
+}
+
+.rrm-label {
+  margin: 0 0 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rrm-primary);
+}
+
+.rrm-list {
+  margin: 0;
+  padding: 0 0 0 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.rrm-list--links {
+  list-style: none;
+  padding-left: 0;
+}
+
+.rrm-list--links a {
+  color: var(--rrm-primary);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.rrm-list--links a:hover,
+.rrm-list--links a:focus-visible {
+  color: var(--rrm-primary-hover);
+  text-decoration: underline;
+}
+
+.rrm-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+  padding-top: 4px;
+}
+
+.rrm-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--rrm-primary);
+  color: #ffffff;
+  font-family: var(--rrm-font-ui);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.rrm-button:hover,
+.rrm-button:focus-visible {
+  background: var(--rrm-primary-hover);
+}
+
+.rrm-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--rrm-primary);
+  font-family: var(--rrm-font-ui);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.rrm-link:hover,
+.rrm-link:focus-visible {
+  color: var(--rrm-primary-hover);
+  text-decoration: underline;
+}
+
+.rrm-copy[data-copied='true'] {
+  color: var(--rrm-ink-muted);
+}
+
+.rrm-icon {
+  flex: 0 0 auto;
+  width: 16px;
+  height: 16px;
+}
+
+.rrm-eyebrow .rrm-icon,
+.rrm-link .rrm-icon {
+  width: 14px;
+  height: 14px;
+}
+
+.rrm-button:focus-visible,
+.rrm-link:focus-visible,
+.rrm-list--links a:focus-visible {
+  outline: 2px solid var(--rrm-chip);
+  outline-offset: 2px;
+}
