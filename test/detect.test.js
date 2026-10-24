@@ -18,9 +18,9 @@ function fixture(name) {
 // is stored as { captured: false, reason } and skipped here, so the gap stays visible in git.
 //
 // Hostname notes from the 2026-10-24 capture: the BMJ DOI 10.1136/bjsports-2025-109785 resolved to
-// bjsm.bmj.com and the NEJM DOI 10.1056/EVIDoa2400195 to evidence.nejm.org. The manifest lists
-// www.bmj.com and www.nejm.org, so neither of those journal hosts gets the automatic badge; the
-// reader's "Check this page" path covers them. The two assertions below pin that as a known gap.
+// bjsm.bmj.com and the NEJM DOI 10.1056/EVIDoa2400195 to evidence.nejm.org, neither of which the
+// spec's host list named. Both were added to the manifest that day (the spec lets the builder add
+// a host that carries citation metas), so every captured fixture host must now badge automatically.
 const captured = readdirSync(fixturesDir)
   .filter((f) => f.endsWith('.json'))
   .map((f) => [f.replace(/\.json$/, ''), fixture(f.replace(/\.json$/, ''))])
@@ -59,12 +59,10 @@ test('each fixture host yields a doi or pmid', () => {
   }
 });
 
-test('every captured fixture URL is on a host the manifest badges, except the two known journal subdomains', () => {
+test('every captured fixture URL is on a host the manifest badges', () => {
   const allowed = new Set(manifest.host_permissions.map((p) => new URL(p.replace('*', '')).hostname));
-  const knownGaps = new Set(['bjsm.bmj.com', 'evidence.nejm.org']);
   for (const [name, fx] of captured) {
     const host = new URL(fx.url).hostname;
-    if (knownGaps.has(host)) continue;
     assert.ok(allowed.has(host), `${name}: ${host} is not in manifest host_permissions`);
   }
 });

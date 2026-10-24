@@ -4,7 +4,13 @@
   "version": "0.1.0",
   "description": "Shows the RRM Research Library's synopsis, grade and citation for the paper you're reading.",
   "minimum_chrome_version": "116",
-  "permissions": ["activeTab", "scripting", "sidePanel", "contextMenus", "storage"],
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "sidePanel",
+    "contextMenus",
+    "storage"
+  ],
   "host_permissions": [
     "https://pubmed.ncbi.nlm.nih.gov/*",
     "https://pmc.ncbi.nlm.nih.gov/*",
@@ -28,9 +34,14 @@
     "https://www.mdpi.com/*",
     "https://journals.plos.org/*",
     "https://www.fertstert.org/*",
+    "https://evidence.nejm.org/*",
+    "https://bjsm.bmj.com/*",
     "https://rrmacademy.org/*"
   ],
-  "background": { "service_worker": "src/background.js", "type": "module" },
+  "background": {
+    "service_worker": "src/background.js",
+    "type": "module"
+  },
   "action": {
     "default_title": "RRM Research Library Lookup",
     "default_popup": "src/popup.html",
@@ -47,7 +58,9 @@
     "48": "src/icons/icon-48.png",
     "128": "src/icons/icon-128.png"
   },
-  "side_panel": { "default_path": "src/sidepanel.html" },
+  "side_panel": {
+    "default_path": "src/sidepanel.html"
+  },
   "content_scripts": [
     {
       "matches": [
@@ -72,9 +85,13 @@
         "https://www.frontiersin.org/*",
         "https://www.mdpi.com/*",
         "https://journals.plos.org/*",
-        "https://www.fertstert.org/*"
+        "https://www.fertstert.org/*",
+        "https://evidence.nejm.org/*",
+        "https://bjsm.bmj.com/*"
       ],
-      "js": ["src/content.js"],
+      "js": [
+        "src/content.js"
+      ],
       "run_at": "document_idle"
     }
   ]
