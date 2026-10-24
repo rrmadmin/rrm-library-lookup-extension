@@ -1,0 +1,64 @@
+{
+  "environment": {
+    "chromium": "149.0.7827.55",
+    "extensionId": "limklljjogahepilfikfocoihoehmhnn",
+    "serviceWorker": "chrome-extension://limklljjogahepilfikfocoihoehmhnn/src/background.js",
+    "date": "2026-10-24"
+  },
+  "realPopup": "chrome.action.openPopup() refused: Could not find an active browser window.; Playwright saw no new page",
+  "store": [
+    "01-found.png: the Boltz PubMed page at 1280x800 with the popup page (360 px wide, full height) composed at the top right where the toolbar popup opens",
+    "02-panel.png: the page at 900x800 beside the side panel page at 380x800, as Chrome docks the panel",
+    "03-not-found.png: PubMed 42917776 (not in the library; badge \"\", card=notFound) with the popup composed as in 01"
+  ],
+  "results": [
+    {
+      "n": 1,
+      "name": "Boltz on PubMed: badge, found card, Copy citation",
+      "verdict": "PASS",
+      "observed": "badge \"RRM\" 693 ms after load (766 ms after commit; PubMed load took 73 ms); card=found; eyebrow \"In the RRM Research Library\"; headline \"Women who first see a generalist for infertility have lower IVF odds\"; chip \"5 - Core RRM\"; summary 363 chars; related 3; Read href https://rrmacademy.org/library/fertility-treatment-use-of-in-vitro-fertilization-and-time-to-live-birth-based-o-reck8jozujuq5hshh/?utm_source=extension&utm_medium=chrome; Copy label \"Copy citation\" -> \"Copied\" in 1 ms, reverted yes; writeText got the APA citation (written); navigation chain: 203 https://pubmed.ncbi.nlm.nih.gov/28379830/ -> 200 https://pubmed.ncbi.nlm.nih.gov/28379830/; worker fetches 2 (?pmid=28379830 HTTP 200 after 629 ms; ?pmid=28379830 HTTP 200 after 63 ms); worker messages: DETECTED frame 0 active https://pubmed.ncbi.nlm.nih.gov/28379830/, DETECTED frame 0 active https://pubmed.ncbi.nlm.nih.gov/28379830/"
+    },
+    {
+      "n": 2,
+      "name": "Published record without a synopsis (PMID 16793945)",
+      "verdict": "PASS",
+      "observed": "badge \"RRM\" 552 ms after load; card=found; headline \"Perchlorate versus other environmental sodium/iodide symporter inhibitors: potential thyroid-related health effects.\" (record title \"Perchlorate versus other environmental sodium/iodide symporter inhibitors: potential thyroid-related health effects.\"); muted line \"Synopsis not yet written.\"; summary blocks 0"
+    },
+    {
+      "n": 3,
+      "name": "PubMed search page: no badge, \"Open a paper\", no Check button",
+      "verdict": "PASS",
+      "observed": "badge \"\" (waited full 3 s + 1.5 s); worker entry {\"canCheck\":false,\"kind\":\"noPaper\"}; card=noPaper; buttons 0; text \"Open a paper on PubMed, doi.org or a journal site and this will show the RRM Research Library's take.\"; worker fetches 0"
+    },
+    {
+      "n": 4,
+      "name": "doi.org link that redirects off the host list",
+      "verdict": "PASS",
+      "observed": "redirect chain: 302 https://doi.org/10.3122/jabfm.2017.02.160184 -> 301 http://www.jabfm.org/lookup/doi/10.3122/jabfm.2017.02.160184 -> 301 https://www.jabfm.org/lookup/doi/10.3122/jabfm.2017.02.160184 -> 200 https://www.jabfm.org/content/30/2/230; final https://www.jabfm.org/content/30/2/230; badge \"\" (never lit); worker entry null; lookups fired by the doi.org pattern: 0; popup card=noPaper with Check button true; after Check: card=noPaper \"Open a paper on PubMed, doi.org or a journal site and this will show the RRM Research Library's take.\", fetches 0 (www.jabfm.org is outside host_permissions and this harness cannot grant activeTab)"
+    },
+    {
+      "n": 5,
+      "name": "Unsupported host: no badge, \"Check this page\", one lookup on click",
+      "verdict": "PASS",
+      "observed": "https://arxiv.org/abs/2301.00001 (HTTP 200): badge \"\"; popup card=noPaper, Check button true; after click: card=noPaper \"Open a paper on PubMed, doi.org or a journal site and this will show the RRM Research Library's take.\", worker fetches 0 (no activeTab grant in this harness, so the page could not be read; a real toolbar click grants it).\nhttps://rrmacademy.org/library/fertility-treatment-use-of-in-vitro-fertilization-and-time-to-live-birth-based-o-reck8jozujuq5hshh/ (in host_permissions, not a content-script host): badge \"\", Check button true; after click: card=found, worker fetches https://rrmacademy.org/api/library/lookup?doi=10.3122%2Fjabfm.2017.02.160184; badge now \"RRM\""
+    },
+    {
+      "n": 6,
+      "name": "Side panel follows three PubMed papers with no blank between",
+      "verdict": "PASS",
+      "observed": "28379830: panel showed \"Women who first see a generalist for infertility have lower IVF odds\" 430 ms after navigation; 26439038: panel showed \"Alpha lipoic acid plus progesterone sped hematoma healing, small trial\" 991 ms after navigation; 30916627: panel showed \"Cannabis use is linked to lower sperm count and quality in men\" 765 ms after navigation; panel card sequence: found \"Women who first see a generalist for inf\" -> found \"Alpha lipoic acid plus progesterone sped\" -> found \"Cannabis use is linked to lower sperm co\"; non-found frames: 0"
+    },
+    {
+      "n": 7,
+      "name": "Context-menu lookup (message sent directly; the real right-click was not exercised)",
+      "verdict": "PASS",
+      "observed": "title selection: worker answered state=found, identifier {\"kind\":\"q\",\"value\":\"Fertility Treatment, Use of in Vitro Fertilization, and Time to Live Birth Based on Initial Provider Type\"}, fetch https://rrmacademy.org/api/library/lookup?q=Fertility+Treatment,+Use+of+in+Vitro+Fertilization,+and+Time+to+Live+Birth+B; panel card=found \"IN THE RRM RESEARCH LIBRARY Women who first see a generalist for infertility have lower IVF odds 5 - Core RRM Open acces\".\nrandom sentence: state=notFound, candidates 3 (\"Did you mean\"); panel card=notFound \"NOT IN THE RRM RESEARCH LIBRARY This paper isn't in the library yet. DID YOU MEAN VITAMIN-A AND EXERCISE IN RELATION TO FOLLICULAR ATRESIA IN THE OPOSSUM Collap\"; fetch 1"
+    },
+    {
+      "n": 8,
+      "name": "Offline: error line, exactly one request, no retry",
+      "verdict": "PASS",
+      "observed": "context.setOffline(true): a direct worker fetch threw \"Failed to fetch\". Check of the already-looked-up PubMed page: state=found, fetch 1 (?doi=10.3122/jabfm.2017.02.160184 HTTP 200 after 1 ms) (Chrome reused its copy of the response). Selection lookup of a DOI never fetched in this run: worker answered state=error in 2 ms; popup card=error \"Couldn't reach the RRM Research Library. Try again.\"; worker fetch attempts over the next 5 s: 1 (?doi=10.1016/j.fertnstert.2019.01.001 threw Failed to fetch after 0 ms); badge \"\""
+    }
+  ]
+}

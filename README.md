@@ -19,6 +19,8 @@ npm run icons     # regenerate src/icons/*.png from the Lucide book-open glyph
 
 Load unpacked: `chrome://extensions`, Developer mode, "Load unpacked", pick this folder.
 
+Loaded-build verification: `scripts/verify-unpacked.mjs` loads the unpacked extension into a throwaway Chromium profile and drives the eight checks of the plan plus the store screenshots. It imports Playwright from `PLAYWRIGHT_DIR` (any installed copy; the repo adds no dependency for it). The latest run and its screenshots: `docs/verification-2026-10-24.md`.
+
 Manifest V3, plain ES modules, no bundler, no framework. Fonts (Cormorant Garamond, Inter) are bundled under the SIL Open Font License; icons are Lucide (ISC). Code is MIT.
 
 ## Architecture
