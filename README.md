@@ -25,8 +25,8 @@ Manifest V3, plain ES modules, no bundler, no framework. Fonts (Cormorant Garamo
 
 ## Store status
 
-- Chrome Web Store: submitted for review 2026-10-24 under publisher RRM Academy (administrator@rrmacademy.org, non-trader). Item ID `hkkbmaapblbpdgklcepdgdkddklecpni`; listing URL once published: https://chromewebstore.google.com/detail/hkkbmaapblbpdgklcepdgdkddklecpni. Category Education, publish automatically after review.
-- Microsoft Edge Add-ons: not yet submitted.
+- Chrome Web Store: submitted 2026-10-24 under publisher RRM Academy (administrator@rrmacademy.org, non-trader); first submission rejected the same night for keyword spam on the publisher-name list in the description, resubmitted with the list removed and pending review. Item ID `hkkbmaapblbpdgklcepdgdkddklecpni`; listing URL once published: https://chromewebstore.google.com/detail/hkkbmaapblbpdgklcepdgdkddklecpni. Category Education, publish automatically after review.
+- Microsoft Edge Add-ons: submitted 2026-10-25 (In review) under the same publisher via Partner Center, product `72d2521d-6b8b-443a-9e37-eb7e1ebd410c`, category Productivity, all markets. An empty stray draft `Product_96892440` sits beside it in the dashboard and can be deleted.
 
 Store assets: `store/listing.md` (copy), `store/screenshots/01..03*.png` (1280x800; the store wants 24-bit PNG with no alpha, so flatten before upload), `store/screenshots/promo-tile-440x280.png` (small promo tile, rendered from the 128px icon with the bundled Cormorant Garamond and Inter).
 
