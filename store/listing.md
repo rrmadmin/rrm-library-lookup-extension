@@ -17,7 +17,7 @@ Click the icon for the library's synopsis, relevance grade, related papers and a
 
 Working down a results list? Open the side panel. It follows the paper in your current tab and adds the record's key findings. Not every library paper has a written synopsis yet. Those cards still show the grade, related papers and a link to the record. If a paper isn't in the library, the card says so and offers a Suggest it link.
 
-Where it works: PubMed, PubMed Central, Europe PMC and doi.org, plus journal pages on ScienceDirect, Springer, Nature, Wiley Online Library, Oxford Academic, Taylor & Francis, SAGE, Cambridge, JAMA Network, NEJM, The BMJ, Frontiers, MDPI, PLOS and Fertility and Sterility. On any other site, click the icon to check the page, or select a title or DOI, right-click and choose Look up in RRM Library.
+Where it works: PubMed, PubMed Central, Europe PMC, doi.org and the article pages of the major journal publishers (the full list is on the product page). On any other site, click the icon to check the page, or select a title or DOI, right-click and choose Look up in RRM Library.
 
 What it doesn't do: it doesn't ask you to sign in. It doesn't track you, with no analytics, cookies or identifiers. It never changes the page you're reading. PubMed, NLM and these publishers don't make or endorse it.
 
