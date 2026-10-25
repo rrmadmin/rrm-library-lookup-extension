@@ -23,6 +23,13 @@ Loaded-build verification: `scripts/verify-unpacked.mjs` loads the unpacked exte
 
 Manifest V3, plain ES modules, no bundler, no framework. Fonts (Cormorant Garamond, Inter) are bundled under the SIL Open Font License; icons are Lucide (ISC). Code is MIT.
 
+## Store status
+
+- Chrome Web Store: submitted for review 2026-10-24 under publisher RRM Academy (administrator@rrmacademy.org, non-trader). Item ID `hkkbmaapblbpdgklcepdgdkddklecpni`; listing URL once published: https://chromewebstore.google.com/detail/hkkbmaapblbpdgklcepdgdkddklecpni. Category Education, publish automatically after review.
+- Microsoft Edge Add-ons: not yet submitted.
+
+Store assets: `store/listing.md` (copy), `store/screenshots/01..03*.png` (1280x800; the store wants 24-bit PNG with no alpha, so flatten before upload), `store/screenshots/promo-tile-440x280.png` (small promo tile, rendered from the 128px icon with the bundled Cormorant Garamond and Inter).
+
 ## Architecture
 
 - `src/content.js` runs at `document_idle` on the fixed host list, reads the citation meta tags once (`src/lib/collect.js`), and messages the service worker. It writes nothing to the page.
